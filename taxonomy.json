@@ -1,0 +1,1379 @@
+{
+  "L0.MANAGE": {
+    "id": "L0.MANAGE",
+    "level": "L0",
+    "label": "MANAGE",
+    "definition": "Control, Value & Optimize Data Assets. The DOM's operational core and largest macro-process (5 L2, 26 L3). Controls data assets through their lifecycle, measures economic value, ensures security and compliance, and provides portfolio management driving BUILD and RUN priorities.",
+    "parent": null,
+    "children": [
+      "MANAGE.L2.1",
+      "MANAGE.L2.2",
+      "MANAGE.L2.3",
+      "MANAGE.L2.4",
+      "MANAGE.L2.5"
+    ]
+  },
+  "L0.BUILD": {
+    "id": "L0.BUILD",
+    "level": "L0",
+    "label": "BUILD",
+    "definition": "Construct Platforms & Data Flows. Constructs the technical platforms and data flows that MANAGE controls and RUN delivers through. 60-70% of capacity is demand-driven by MANAGE Portfolio Management; 30-40% addresses technical debt, platform evolution, and innovation.",
+    "parent": null,
+    "children": [
+      "BUILD.L2.1",
+      "BUILD.L2.2",
+      "BUILD.L2.3"
+    ]
+  },
+  "L0.GOVERN": {
+    "id": "L0.GOVERN",
+    "level": "L0",
+    "label": "GOVERN",
+    "definition": "Set Direction, Rules & Architecture. Establishes the strategic compass, governance framework, and architectural standards guiding all data activities. Answers: Why invest in data? What rules apply? How should the data landscape be structured?",
+    "parent": null,
+    "children": [
+      "GOVERN.L2.1",
+      "GOVERN.L2.2",
+      "GOVERN.L2.3"
+    ]
+  },
+  "L0.RUN": {
+    "id": "L0.RUN",
+    "level": "L0",
+    "label": "RUN",
+    "definition": "Deliver Value to the Business. The value realization engine. Translates everything GOVERN directs, MANAGE controls, and BUILD constructs into consumable business outcomes. Where data management proves its worth — or fails to.",
+    "parent": null,
+    "children": [
+      "RUN.L2.1",
+      "RUN.L2.2",
+      "RUN.L2.3"
+    ]
+  },
+  "GOVERN.L2.1": {
+    "id": "GOVERN.L2.1",
+    "level": "L2",
+    "label": "Data Strategy & Direction",
+    "definition": "Defines and steers the enterprise data strategy, investment framework, and organizational design. Provides the strategic compass guiding all GOVERN, MANAGE, BUILD, and RUN activities. Ensures data capabilities serve business objectives with measurable returns.",
+    "parent": "L0.GOVERN",
+    "children": [
+      "GOVERN.L2.1.L3.1",
+      "GOVERN.L2.1.L3.2",
+      "GOVERN.L2.1.L3.3"
+    ],
+    "l3s": [
+      {
+        "id": "GOVERN.L2.1.L3.1",
+        "level": "L3",
+        "label": "Data Strategy & Communication",
+        "definition": "Strategic alignment and stakeholder buy-in for data initiatives.",
+        "parent": "GOVERN.L2.1",
+        "children": []
+      },
+      {
+        "id": "GOVERN.L2.1.L3.2",
+        "level": "L3",
+        "label": "Data Valuation & Investment Framework",
+        "definition": "Economic justification and portfolio logic for data investments.",
+        "parent": "GOVERN.L2.1",
+        "children": []
+      },
+      {
+        "id": "GOVERN.L2.1.L3.3",
+        "level": "L3",
+        "label": "Organizational Design & Operating Model",
+        "definition": "Centralized vs. federated operating model decisions for data capabilities.",
+        "parent": "GOVERN.L2.1",
+        "children": []
+      }
+    ]
+  },
+  "GOVERN.L2.2": {
+    "id": "GOVERN.L2.2",
+    "level": "L2",
+    "label": "Data Governance & Oversight",
+    "definition": "Establishes and operates the governance framework: policies, decision rights, accountability structures, compliance programs, stewardship models, and AI governance. Translates strategic direction (L2.1) into enforceable rules and oversight mechanisms.",
+    "parent": "L0.GOVERN",
+    "children": [
+      "GOVERN.L2.2.L3.1",
+      "GOVERN.L2.2.L3.2",
+      "GOVERN.L2.2.L3.3",
+      "GOVERN.L2.2.L3.4",
+      "GOVERN.L2.2.L3.5"
+    ],
+    "l3s": [
+      {
+        "id": "GOVERN.L2.2.L3.1",
+        "level": "L3",
+        "label": "Governance Framework & Decision Rights",
+        "definition": "Policy architecture and enforcement mechanisms for data governance.",
+        "parent": "GOVERN.L2.2",
+        "children": []
+      },
+      {
+        "id": "GOVERN.L2.2.L3.2",
+        "level": "L3",
+        "label": "Data Compliance, Legal & Privacy",
+        "definition": "Compliance with GDPR, DORA, AI Act and other regulatory frameworks.",
+        "parent": "GOVERN.L2.2",
+        "children": []
+      },
+      {
+        "id": "GOVERN.L2.2.L3.3",
+        "level": "L3",
+        "label": "Ownership & Stewardship",
+        "definition": "Accountability structures and domain responsibility for data assets.",
+        "parent": "GOVERN.L2.2",
+        "children": []
+      },
+      {
+        "id": "GOVERN.L2.2.L3.4",
+        "level": "L3",
+        "label": "Data Audit & Certification",
+        "definition": "Verification and attestation of data management practices and compliance.",
+        "parent": "GOVERN.L2.2",
+        "children": []
+      },
+      {
+        "id": "GOVERN.L2.2.L3.5",
+        "level": "L3",
+        "label": "ML/AI Model Governance",
+        "definition": "Ethical AI governance, model lifecycle management and AI Act compliance.",
+        "parent": "GOVERN.L2.2",
+        "children": []
+      }
+    ]
+  },
+  "GOVERN.L2.3": {
+    "id": "GOVERN.L2.3",
+    "level": "L2",
+    "label": "Data Architecture & Standards",
+    "definition": "Establishes the enterprise data architecture, architectural principles, security-by-design foundations, and technology standards. Provides the technical governance blueprint that BUILD constructs, MANAGE operates within, and RUN delivers through.",
+    "parent": "L0.GOVERN",
+    "children": [
+      "GOVERN.L2.3.L3.1",
+      "GOVERN.L2.3.L3.2",
+      "GOVERN.L2.3.L3.3"
+    ],
+    "l3s": [
+      {
+        "id": "GOVERN.L2.3.L3.1",
+        "level": "L3",
+        "label": "Enterprise Information Architecture",
+        "definition": "Data landscape blueprint defining the enterprise information structure.",
+        "parent": "GOVERN.L2.3",
+        "children": []
+      },
+      {
+        "id": "GOVERN.L2.3.L3.2",
+        "level": "L3",
+        "label": "Architecture Principles & Security-by-Design",
+        "definition": "Non-negotiable architectural standards and security-by-design foundations.",
+        "parent": "GOVERN.L2.3",
+        "children": []
+      },
+      {
+        "id": "GOVERN.L2.3.L3.3",
+        "level": "L3",
+        "label": "Technology Radar & Reference Architecture",
+        "definition": "Technology lifecycle management preventing premature adoption and dangerous tech debt.",
+        "parent": "GOVERN.L2.3",
+        "children": []
+      }
+    ]
+  },
+  "MANAGE.L2.1": {
+    "id": "MANAGE.L2.1",
+    "level": "L2",
+    "label": "Data Economics & Performance",
+    "definition": "Establishes the economic framework for treating data as a measurable business asset through systematic valuation, cost accounting, monetization, and portfolio management. Transforms data management from a cost center into a value-demonstrating discipline.",
+    "parent": "L0.MANAGE",
+    "children": [
+      "MANAGE.L2.1.L3.1",
+      "MANAGE.L2.1.L3.2",
+      "MANAGE.L2.1.L3.3",
+      "MANAGE.L2.1.L3.4",
+      "MANAGE.L2.1.L3.5"
+    ],
+    "l3s": [
+      {
+        "id": "MANAGE.L2.1.L3.1",
+        "level": "L3",
+        "label": "Data Asset Valuation",
+        "definition": "Systematic measurement of data asset worth using economic methodologies.",
+        "parent": "MANAGE.L2.1",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.1.L3.2",
+        "level": "L3",
+        "label": "Cost Accounting & Chargeback",
+        "definition": "True cost allocation for data capabilities across the organization.",
+        "parent": "MANAGE.L2.1",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.1.L3.3",
+        "level": "L3",
+        "label": "Portfolio Management & Demand Prioritization",
+        "definition": "Investment allocation channeling 60-70% of BUILD capacity through economically rationalized priorities.",
+        "parent": "MANAGE.L2.1",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.1.L3.4",
+        "level": "L3",
+        "label": "Data Monetization & Value Realization",
+        "definition": "Mechanisms for capturing and demonstrating value from data assets.",
+        "parent": "MANAGE.L2.1",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.1.L3.5",
+        "level": "L3",
+        "label": "Economic Performance Reporting",
+        "definition": "CFO-grade ROI measurement and reporting for data investments.",
+        "parent": "MANAGE.L2.1",
+        "children": []
+      }
+    ]
+  },
+  "MANAGE.L2.2": {
+    "id": "MANAGE.L2.2",
+    "level": "L2",
+    "label": "Data Security, Privacy & Compliance",
+    "definition": "Implements comprehensive data security, privacy, and compliance protecting assets through access control, classification, encryption, breach detection, consent management, and regulatory engagement. Ensures confidentiality, integrity, and availability while enabling appropriate and lawful data usage.",
+    "parent": "L0.MANAGE",
+    "children": [
+      "MANAGE.L2.2.L3.1",
+      "MANAGE.L2.2.L3.2",
+      "MANAGE.L2.2.L3.3",
+      "MANAGE.L2.2.L3.4",
+      "MANAGE.L2.2.L3.5",
+      "MANAGE.L2.2.L3.6"
+    ],
+    "l3s": [
+      {
+        "id": "MANAGE.L2.2.L3.1",
+        "level": "L3",
+        "label": "Role-Based Data Access",
+        "definition": "Access control determining who accesses what data under which conditions.",
+        "parent": "MANAGE.L2.2",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.2.L3.2",
+        "level": "L3",
+        "label": "Data Classification, Protection & Encryption",
+        "definition": "Data-centric protection through classification schemes and encryption.",
+        "parent": "MANAGE.L2.2",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.2.L3.3",
+        "level": "L3",
+        "label": "Data Breach Detection & Incident Response",
+        "definition": "Threat detection, incident response and breach management.",
+        "parent": "MANAGE.L2.2",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.2.L3.4",
+        "level": "L3",
+        "label": "GDPR Consent & Preference Management",
+        "definition": "Granular, traceable management of consent as a data asset — atomic capability concept.",
+        "parent": "MANAGE.L2.2",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.2.L3.5",
+        "level": "L3",
+        "label": "Data Protection Impact Assessment (DPIA)",
+        "definition": "Risk assessment for data processing activities under GDPR and DORA.",
+        "parent": "MANAGE.L2.2",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.2.L3.6",
+        "level": "L3",
+        "label": "Regulatory Affairs & Authority Management",
+        "definition": "Interface management with regulatory authorities and compliance bodies.",
+        "parent": "MANAGE.L2.2",
+        "children": []
+      }
+    ]
+  },
+  "MANAGE.L2.3": {
+    "id": "MANAGE.L2.3",
+    "level": "L2",
+    "label": "Knowledge & Metadata Management",
+    "definition": "Manages the enterprise knowledge layer: data standards, semantic models, metadata, business glossary, data lineage, and catalogue operations. Enables data discovery, shared understanding, and confident usage across the organization.",
+    "parent": "L0.MANAGE",
+    "children": [
+      "MANAGE.L2.3.L3.1",
+      "MANAGE.L2.3.L3.2",
+      "MANAGE.L2.3.L3.3",
+      "MANAGE.L2.3.L3.4",
+      "MANAGE.L2.3.L3.5",
+      "MANAGE.L2.3.L3.6"
+    ],
+    "l3s": [
+      {
+        "id": "MANAGE.L2.3.L3.1",
+        "level": "L3",
+        "label": "Data Standards Management",
+        "definition": "Naming conventions, formatting rules and data standards governance.",
+        "parent": "MANAGE.L2.3",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.3.L3.2",
+        "level": "L3",
+        "label": "Data Modelling",
+        "definition": "Conceptual, logical and physical data modelling across the enterprise.",
+        "parent": "MANAGE.L2.3",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.3.L3.3",
+        "level": "L3",
+        "label": "Metadata & Business Glossary",
+        "definition": "Shared business vocabulary and metadata management.",
+        "parent": "MANAGE.L2.3",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.3.L3.4",
+        "level": "L3",
+        "label": "Data Lineage & Impact Analysis",
+        "definition": "End-to-end traceability of data flows, critical for AI Act compliance.",
+        "parent": "MANAGE.L2.3",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.3.L3.5",
+        "level": "L3",
+        "label": "Semantic Models & Taxonomy Management",
+        "definition": "Meaning structures, taxonomies and semantic layer management.",
+        "parent": "MANAGE.L2.3",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.3.L3.6",
+        "level": "L3",
+        "label": "Data Dictionaries & Catalogue Operations",
+        "definition": "Discovery platform operations and data dictionary management.",
+        "parent": "MANAGE.L2.3",
+        "children": []
+      }
+    ]
+  },
+  "MANAGE.L2.4": {
+    "id": "MANAGE.L2.4",
+    "level": "L2",
+    "label": "Data Asset Management",
+    "definition": "Manages data assets through their complete lifecycle: master data, reference data, quality, anonymization, and retention. Ensures assets remain accurate, consistent, secure, and compliant from creation to deletion.",
+    "parent": "L0.MANAGE",
+    "children": [
+      "MANAGE.L2.4.L3.1",
+      "MANAGE.L2.4.L3.2",
+      "MANAGE.L2.4.L3.3",
+      "MANAGE.L2.4.L3.4",
+      "MANAGE.L2.4.L3.5"
+    ],
+    "l3s": [
+      {
+        "id": "MANAGE.L2.4.L3.1",
+        "level": "L3",
+        "label": "Master & Reference Data Management",
+        "definition": "Golden records, master data management and reference data governance.",
+        "parent": "MANAGE.L2.4",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.4.L3.2",
+        "level": "L3",
+        "label": "Data Quality Management",
+        "definition": "Fitness for purpose — appears as Indispensable in 10 of 12 frameworks mapped.",
+        "parent": "MANAGE.L2.4",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.4.L3.3",
+        "level": "L3",
+        "label": "Data Anonymization & Pseudonymization",
+        "definition": "Privacy-preserving techniques for data protection and AI training data.",
+        "parent": "MANAGE.L2.4",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.4.L3.4",
+        "level": "L3",
+        "label": "Data Retention, Archival & Deletion",
+        "definition": "Lifecycle compliance from creation to deletion.",
+        "parent": "MANAGE.L2.4",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.4.L3.5",
+        "level": "L3",
+        "label": "Test Data Management",
+        "definition": "Non-production data management for development and testing.",
+        "parent": "MANAGE.L2.4",
+        "children": []
+      }
+    ]
+  },
+  "MANAGE.L2.5": {
+    "id": "MANAGE.L2.5",
+    "level": "L2",
+    "label": "Data Operations & Reliability",
+    "definition": "Ensures data capabilities deliver agreed performance, availability, and quality through SLA definition, operational monitoring, business continuity, and continuous improvement. Brings operational discipline and reliability engineering to the data function.",
+    "parent": "L0.MANAGE",
+    "children": [
+      "MANAGE.L2.5.L3.1",
+      "MANAGE.L2.5.L3.2",
+      "MANAGE.L2.5.L3.3",
+      "MANAGE.L2.5.L3.4"
+    ],
+    "l3s": [
+      {
+        "id": "MANAGE.L2.5.L3.1",
+        "level": "L3",
+        "label": "Service Level Agreement Definition & Monitoring",
+        "definition": "SLA architecture for data services.",
+        "parent": "MANAGE.L2.5",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.5.L3.2",
+        "level": "L3",
+        "label": "Business Continuity & Disaster Recovery",
+        "definition": "Resilience planning and disaster recovery for data services.",
+        "parent": "MANAGE.L2.5",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.5.L3.3",
+        "level": "L3",
+        "label": "Service Performance Reporting",
+        "definition": "Delivery measurement and performance reporting for data services.",
+        "parent": "MANAGE.L2.5",
+        "children": []
+      },
+      {
+        "id": "MANAGE.L2.5.L3.4",
+        "level": "L3",
+        "label": "Continuous Service Improvement",
+        "definition": "Maturity progression closing the loop: RUN performance feeds back into improvement cycles.",
+        "parent": "MANAGE.L2.5",
+        "children": []
+      }
+    ]
+  },
+  "BUILD.L2.1": {
+    "id": "BUILD.L2.1",
+    "level": "L2",
+    "label": "Data Integration & Ingestion",
+    "definition": "Establishes and manages data integration and ingestion across the enterprise through pipeline orchestration, real-time streaming, batch processing, change data capture, and external data acquisition. The connective tissue between data sources and consumption platforms.",
+    "parent": "L0.BUILD",
+    "children": [
+      "BUILD.L2.1.L3.1",
+      "BUILD.L2.1.L3.2",
+      "BUILD.L2.1.L3.3",
+      "BUILD.L2.1.L3.4",
+      "BUILD.L2.1.L3.5",
+      "BUILD.L2.1.L3.6"
+    ],
+    "l3s": [
+      {
+        "id": "BUILD.L2.1.L3.1",
+        "level": "L3",
+        "label": "Data Orchestration & Choreography",
+        "definition": "Pipeline coordination and workflow orchestration for data movement.",
+        "parent": "BUILD.L2.1",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.1.L3.2",
+        "level": "L3",
+        "label": "Real-Time Data Acquisition",
+        "definition": "Streaming ingestion and real-time data capture.",
+        "parent": "BUILD.L2.1",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.1.L3.3",
+        "level": "L3",
+        "label": "Batch Data Transfer & Processing",
+        "definition": "Scheduled data movement and batch processing pipelines.",
+        "parent": "BUILD.L2.1",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.1.L3.4",
+        "level": "L3",
+        "label": "Change Data Capture & Event Sourcing",
+        "definition": "Incremental capture of data changes and event-based data sourcing.",
+        "parent": "BUILD.L2.1",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.1.L3.5",
+        "level": "L3",
+        "label": "External Data Supplier Management",
+        "definition": "Third-party data feeds and external supplier integration.",
+        "parent": "BUILD.L2.1",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.1.L3.6",
+        "level": "L3",
+        "label": "Screen & Web Scraping",
+        "definition": "Unstructured data acquisition from screens and web sources.",
+        "parent": "BUILD.L2.1",
+        "children": []
+      }
+    ]
+  },
+  "BUILD.L2.2": {
+    "id": "BUILD.L2.2",
+    "level": "L2",
+    "label": "Data Platform & Storage",
+    "definition": "Establishes and operates the data platform and storage landscape making data available for operational, analytical, and exploratory consumption. Covers transactional systems, analytical stores, data lakes, and virtualization — the infrastructure layer on which all data capabilities depend.",
+    "parent": "L0.BUILD",
+    "children": [
+      "BUILD.L2.2.L3.1",
+      "BUILD.L2.2.L3.2",
+      "BUILD.L2.2.L3.3",
+      "BUILD.L2.2.L3.4"
+    ],
+    "l3s": [
+      {
+        "id": "BUILD.L2.2.L3.1",
+        "level": "L3",
+        "label": "Transactional Data Platforms",
+        "definition": "OLTP systems and transactional data platform management.",
+        "parent": "BUILD.L2.2",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.2.L3.2",
+        "level": "L3",
+        "label": "Data Lake Management",
+        "definition": "Raw and staged data storage in data lake architectures.",
+        "parent": "BUILD.L2.2",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.2.L3.3",
+        "level": "L3",
+        "label": "Data Warehouse & Data Mart Management",
+        "definition": "Analytical serving layer through data warehouses and data marts.",
+        "parent": "BUILD.L2.2",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.2.L3.4",
+        "level": "L3",
+        "label": "Data Virtualization & Federation",
+        "definition": "Logical access layer providing virtual views without physical data movement.",
+        "parent": "BUILD.L2.2",
+        "children": []
+      }
+    ]
+  },
+  "BUILD.L2.3": {
+    "id": "BUILD.L2.3",
+    "level": "L2",
+    "label": "AI & Data Engineering",
+    "definition": "Constructs the engineering infrastructure enabling AI and machine learning capabilities: feature management, ML pipelines, model registries, and inference serving. Bridges data platform capabilities and AI-powered applications in RUN.",
+    "parent": "L0.BUILD",
+    "children": [
+      "BUILD.L2.3.L3.1",
+      "BUILD.L2.3.L3.2",
+      "BUILD.L2.3.L3.3",
+      "BUILD.L2.3.L3.4"
+    ],
+    "l3s": [
+      {
+        "id": "BUILD.L2.3.L3.1",
+        "level": "L3",
+        "label": "Feature Store & Training Data Management",
+        "definition": "Centralised management of ML features ensuring consistency between training and serving, and governance of training datasets including versioning and lineage.",
+        "parent": "BUILD.L2.3",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.3.L3.2",
+        "level": "L3",
+        "label": "ML Pipeline & Model Infrastructure",
+        "definition": "Engineering and orchestration of end-to-end ML pipelines covering data preparation, training runs, evaluation, and automated retraining in production environments.",
+        "parent": "BUILD.L2.3",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.3.L3.3",
+        "level": "L3",
+        "label": "LLM Serving & Inference Infrastructure",
+        "definition": "Infrastructure for deploying and serving large language models and AI inference workloads at scale, covering latency management, cost control, and model hosting patterns.",
+        "parent": "BUILD.L2.3",
+        "children": []
+      },
+      {
+        "id": "BUILD.L2.3.L3.4",
+        "level": "L3",
+        "label": "Model Registry & Versioning",
+        "definition": "Centralised catalogue and lifecycle management for all ML and AI models: versioning, lineage, performance tracking, promotion gates, and deprecation across environments.",
+        "parent": "BUILD.L2.3",
+        "children": []
+      }
+    ]
+  },
+  "RUN.L2.1": {
+    "id": "RUN.L2.1",
+    "level": "L2",
+    "label": "Data Product Delivery",
+    "definition": "Delivers consumable data products through business intelligence, self-service analytics, forecasting, APIs, and KPI delivery. Ensures data products are discoverable and accessible. The primary value realization mechanism for most organizations.",
+    "parent": "L0.RUN",
+    "children": [
+      "RUN.L2.1.L3.1",
+      "RUN.L2.1.L3.2",
+      "RUN.L2.1.L3.3",
+      "RUN.L2.1.L3.4",
+      "RUN.L2.1.L3.5",
+      "RUN.L2.1.L3.6"
+    ],
+    "l3s": [
+      {
+        "id": "RUN.L2.1.L3.1",
+        "level": "L3",
+        "label": "Business Intelligence & Reporting Delivery",
+        "definition": "Structured reports, visualizations, and dashboards delivering business intelligence to decision-makers across the organization.",
+        "parent": "RUN.L2.1",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.1.L3.2",
+        "level": "L3",
+        "label": "Self-Service Analytics",
+        "definition": "Empowers business users to explore, query, and analyse data autonomously through governed self-service platforms and semantic layers.",
+        "parent": "RUN.L2.1",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.1.L3.3",
+        "level": "L3",
+        "label": "Data Product Catalogue & Discoverability",
+        "definition": "Makes data products findable, understandable, and trustworthy through cataloguing, ownership declaration, SLA exposure, and consumer-facing discovery interfaces.",
+        "parent": "RUN.L2.1",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.1.L3.4",
+        "level": "L3",
+        "label": "Forecasting & Simulation Analytics",
+        "definition": "Predictive data products through forecasting and simulation.",
+        "parent": "RUN.L2.1",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.1.L3.5",
+        "level": "L3",
+        "label": "Data API & Services Management",
+        "definition": "Programmatic data access through APIs — critical for Data Mesh implementations.",
+        "parent": "RUN.L2.1",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.1.L3.6",
+        "level": "L3",
+        "label": "KPI & Metrics Delivery",
+        "definition": "Business measurement through KPI and metrics delivery.",
+        "parent": "RUN.L2.1",
+        "children": []
+      }
+    ]
+  },
+  "RUN.L2.2": {
+    "id": "RUN.L2.2",
+    "level": "L2",
+    "label": "Data Insights",
+    "definition": "Generates advanced insights and intelligent capabilities through data science, machine learning, and AI applications. Encompasses predictive analytics, NLP, generative AI, enterprise search, ML experimentation, and decision intelligence.",
+    "parent": "L0.RUN",
+    "children": [
+      "RUN.L2.2.L3.1",
+      "RUN.L2.2.L3.2",
+      "RUN.L2.2.L3.3",
+      "RUN.L2.2.L3.4",
+      "RUN.L2.2.L3.5",
+      "RUN.L2.2.L3.6"
+    ],
+    "l3s": [
+      {
+        "id": "RUN.L2.2.L3.1",
+        "level": "L3",
+        "label": "Advanced Analytics & Data Science",
+        "definition": "Statistical modeling, machine learning and advanced analytical capabilities.",
+        "parent": "RUN.L2.2",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.2.L3.2",
+        "level": "L3",
+        "label": "NLP & Conversational AI",
+        "definition": "Natural language processing and conversational AI applications.",
+        "parent": "RUN.L2.2",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.2.L3.3",
+        "level": "L3",
+        "label": "Generative AI & LLM Applications",
+        "definition": "Design and operation of generative AI applications leveraging large language models, including prompt engineering, retrieval-augmented generation, and enterprise LLM deployment.",
+        "parent": "RUN.L2.2",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.2.L3.4",
+        "level": "L3",
+        "label": "Enterprise Search & Information Retrieval",
+        "definition": "Knowledge discovery through enterprise search and information retrieval.",
+        "parent": "RUN.L2.2",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.2.L3.5",
+        "level": "L3",
+        "label": "ML Model Development & Experimentation",
+        "definition": "End-to-end machine learning model development lifecycle: problem framing, feature engineering, training, evaluation, and experiment tracking prior to production deployment.",
+        "parent": "RUN.L2.2",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.2.L3.6",
+        "level": "L3",
+        "label": "Decision Intelligence & Optimization",
+        "definition": "Automated and augmented decision-making through optimization models, simulation, prescriptive analytics, and decision support systems embedded in business processes.",
+        "parent": "RUN.L2.2",
+        "children": []
+      }
+    ]
+  },
+  "RUN.L2.3": {
+    "id": "RUN.L2.3",
+    "level": "L2",
+    "label": "DataOps & Platform Operations",
+    "definition": "Ensures continuous, reliable, and cost-efficient operation of data pipelines, platforms, and data products in production. Encompasses monitoring, incident management, capacity planning, DataOps practices, and FinOps for data infrastructure. The operational backbone that sustains the value delivered by RUN.L2.1 and RUN.L2.2.",
+    "parent": "L0.RUN",
+    "children": [
+      "RUN.L2.3.L3.1",
+      "RUN.L2.3.L3.2",
+      "RUN.L2.3.L3.3",
+      "RUN.L2.3.L3.4",
+      "RUN.L2.3.L3.5",
+      "RUN.L2.3.L3.6"
+    ],
+    "l3s": [
+      {
+        "id": "RUN.L2.3.L3.1",
+        "level": "L3",
+        "label": "Data Pipeline Operations & Monitoring",
+        "definition": "Day-to-day operation and monitoring of data ingestion, transformation, and delivery pipelines. Includes scheduling, failure detection, alerting, restart management, and DataOps automation practices (CI/CD for data). Ensures pipelines run reliably within agreed SLAs.",
+        "parent": "RUN.L2.3",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.3.L3.2",
+        "level": "L3",
+        "label": "Data Platform Observability",
+        "definition": "End-to-end visibility into the health, freshness, volume, schema, and distribution of data across the platform. Encompasses data quality monitoring in production (data observability tools such as Monte Carlo, Bigeye, or Soda), lineage-based impact analysis for anomalies, and automated data freshness alerting. Distinct from BUILD-time testing.",
+        "parent": "RUN.L2.3",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.3.L3.3",
+        "level": "L3",
+        "label": "Data Incident Management",
+        "definition": "Structured response to data incidents in production: pipeline failures, data quality breaches, latency violations, and data loss events. Covers triage, escalation, root-cause analysis, remediation, post-mortem, and prevention. Aligns with ITIL incident management practices adapted for data-intensive systems and integrates with MANAGE_L2.2 for security incidents.",
+        "parent": "RUN.L2.3",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.3.L3.4",
+        "level": "L3",
+        "label": "Data Infrastructure Capacity Planning",
+        "definition": "Forward-looking management of compute, storage, and network capacity for data workloads. Includes demand forecasting, resource reservation, auto-scaling policies, tier management (hot/warm/cold storage), and infrastructure lifecycle decisions. Prevents capacity-induced outages while avoiding over-provisioning and associated FinOps waste.",
+        "parent": "RUN.L2.3",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.3.L3.5",
+        "level": "L3",
+        "label": "Data Product Lifecycle Operations",
+        "definition": "End-to-end operational management of data products through their lifecycle: launch, version management, deprecation, and decommissioning. Includes managing data product SLAs, consumer notification, backward compatibility, and the DataContract enforcement between producers and consumers. Operationalises the Data Mesh product ownership principle in production.",
+        "parent": "RUN.L2.3",
+        "children": []
+      },
+      {
+        "id": "RUN.L2.3.L3.6",
+        "level": "L3",
+        "label": "Data FinOps & Cloud Cost Management",
+        "definition": "Continuous monitoring, allocation, and optimisation of cloud and on-premises data infrastructure costs. Covers per-workload cost attribution (chargeback to BU or data product), query cost optimization (BigQuery slot management, Redshift concurrency), storage tier management, LLM inference cost governance, and unit-economics dashboards for data products. The operational complement to MANAGE_L2.1 economic governance.",
+        "parent": "RUN.L2.3",
+        "children": []
+      }
+    ]
+  },
+  "BUILD.L2.1.L3.1": {
+    "id": "BUILD.L2.1.L3.1",
+    "level": "L3",
+    "label": "Data Orchestration & Choreography",
+    "definition": "Pipeline coordination and workflow orchestration for data movement.",
+    "parent": "BUILD.L2.1",
+    "children": []
+  },
+  "BUILD.L2.1.L3.2": {
+    "id": "BUILD.L2.1.L3.2",
+    "level": "L3",
+    "label": "Real-Time Data Acquisition",
+    "definition": "Streaming ingestion and real-time data capture.",
+    "parent": "BUILD.L2.1",
+    "children": []
+  },
+  "BUILD.L2.1.L3.3": {
+    "id": "BUILD.L2.1.L3.3",
+    "level": "L3",
+    "label": "Batch Data Transfer & Processing",
+    "definition": "Scheduled data movement and batch processing pipelines.",
+    "parent": "BUILD.L2.1",
+    "children": []
+  },
+  "BUILD.L2.1.L3.4": {
+    "id": "BUILD.L2.1.L3.4",
+    "level": "L3",
+    "label": "Change Data Capture & Event Sourcing",
+    "definition": "Incremental capture of data changes and event-based data sourcing.",
+    "parent": "BUILD.L2.1",
+    "children": []
+  },
+  "BUILD.L2.1.L3.5": {
+    "id": "BUILD.L2.1.L3.5",
+    "level": "L3",
+    "label": "External Data Supplier Management",
+    "definition": "Third-party data feeds and external supplier integration.",
+    "parent": "BUILD.L2.1",
+    "children": []
+  },
+  "BUILD.L2.1.L3.6": {
+    "id": "BUILD.L2.1.L3.6",
+    "level": "L3",
+    "label": "Screen & Web Scraping",
+    "definition": "Unstructured data acquisition from screens and web sources.",
+    "parent": "BUILD.L2.1",
+    "children": []
+  },
+  "BUILD.L2.2.L3.1": {
+    "id": "BUILD.L2.2.L3.1",
+    "level": "L3",
+    "label": "Transactional Data Platforms",
+    "definition": "OLTP systems and transactional data platform management.",
+    "parent": "BUILD.L2.2",
+    "children": []
+  },
+  "BUILD.L2.2.L3.2": {
+    "id": "BUILD.L2.2.L3.2",
+    "level": "L3",
+    "label": "Data Lake Management",
+    "definition": "Raw and staged data storage in data lake architectures.",
+    "parent": "BUILD.L2.2",
+    "children": []
+  },
+  "BUILD.L2.2.L3.3": {
+    "id": "BUILD.L2.2.L3.3",
+    "level": "L3",
+    "label": "Data Warehouse & Data Mart Management",
+    "definition": "Analytical serving layer through data warehouses and data marts.",
+    "parent": "BUILD.L2.2",
+    "children": []
+  },
+  "BUILD.L2.2.L3.4": {
+    "id": "BUILD.L2.2.L3.4",
+    "level": "L3",
+    "label": "Data Virtualization & Federation",
+    "definition": "Logical access layer providing virtual views without physical data movement.",
+    "parent": "BUILD.L2.2",
+    "children": []
+  },
+  "BUILD.L2.3.L3.1": {
+    "id": "BUILD.L2.3.L3.1",
+    "level": "L3",
+    "label": "Feature Store & Training Data Management",
+    "definition": "Centralised management of ML features ensuring consistency between training and serving, and governance of training datasets including versioning and lineage.",
+    "parent": "BUILD.L2.3",
+    "children": []
+  },
+  "BUILD.L2.3.L3.2": {
+    "id": "BUILD.L2.3.L3.2",
+    "level": "L3",
+    "label": "ML Pipeline & Model Infrastructure",
+    "definition": "Engineering and orchestration of end-to-end ML pipelines covering data preparation, training runs, evaluation, and automated retraining in production environments.",
+    "parent": "BUILD.L2.3",
+    "children": []
+  },
+  "BUILD.L2.3.L3.3": {
+    "id": "BUILD.L2.3.L3.3",
+    "level": "L3",
+    "label": "LLM Serving & Inference Infrastructure",
+    "definition": "Infrastructure for deploying and serving large language models and AI inference workloads at scale, covering latency management, cost control, and model hosting patterns.",
+    "parent": "BUILD.L2.3",
+    "children": []
+  },
+  "BUILD.L2.3.L3.4": {
+    "id": "BUILD.L2.3.L3.4",
+    "level": "L3",
+    "label": "Model Registry & Versioning",
+    "definition": "Centralised catalogue and lifecycle management for all ML and AI models: versioning, lineage, performance tracking, promotion gates, and deprecation across environments.",
+    "parent": "BUILD.L2.3",
+    "children": []
+  },
+  "GOVERN.L2.1.L3.1": {
+    "id": "GOVERN.L2.1.L3.1",
+    "level": "L3",
+    "label": "Data Strategy & Communication",
+    "definition": "Strategic alignment and stakeholder buy-in for data initiatives.",
+    "parent": "GOVERN.L2.1",
+    "children": []
+  },
+  "GOVERN.L2.1.L3.2": {
+    "id": "GOVERN.L2.1.L3.2",
+    "level": "L3",
+    "label": "Data Valuation & Investment Framework",
+    "definition": "Economic justification and portfolio logic for data investments.",
+    "parent": "GOVERN.L2.1",
+    "children": []
+  },
+  "GOVERN.L2.1.L3.3": {
+    "id": "GOVERN.L2.1.L3.3",
+    "level": "L3",
+    "label": "Organizational Design & Operating Model",
+    "definition": "Centralized vs. federated operating model decisions for data capabilities.",
+    "parent": "GOVERN.L2.1",
+    "children": []
+  },
+  "GOVERN.L2.2.L3.1": {
+    "id": "GOVERN.L2.2.L3.1",
+    "level": "L3",
+    "label": "Governance Framework & Decision Rights",
+    "definition": "Policy architecture and enforcement mechanisms for data governance.",
+    "parent": "GOVERN.L2.2",
+    "children": []
+  },
+  "GOVERN.L2.2.L3.2": {
+    "id": "GOVERN.L2.2.L3.2",
+    "level": "L3",
+    "label": "Data Compliance, Legal & Privacy",
+    "definition": "Compliance with GDPR, DORA, AI Act and other regulatory frameworks.",
+    "parent": "GOVERN.L2.2",
+    "children": []
+  },
+  "GOVERN.L2.2.L3.3": {
+    "id": "GOVERN.L2.2.L3.3",
+    "level": "L3",
+    "label": "Ownership & Stewardship",
+    "definition": "Accountability structures and domain responsibility for data assets.",
+    "parent": "GOVERN.L2.2",
+    "children": []
+  },
+  "GOVERN.L2.2.L3.4": {
+    "id": "GOVERN.L2.2.L3.4",
+    "level": "L3",
+    "label": "Data Audit & Certification",
+    "definition": "Verification and attestation of data management practices and compliance.",
+    "parent": "GOVERN.L2.2",
+    "children": []
+  },
+  "GOVERN.L2.2.L3.5": {
+    "id": "GOVERN.L2.2.L3.5",
+    "level": "L3",
+    "label": "ML/AI Model Governance",
+    "definition": "Ethical AI governance, model lifecycle management and AI Act compliance.",
+    "parent": "GOVERN.L2.2",
+    "children": []
+  },
+  "GOVERN.L2.3.L3.1": {
+    "id": "GOVERN.L2.3.L3.1",
+    "level": "L3",
+    "label": "Enterprise Information Architecture",
+    "definition": "Data landscape blueprint defining the enterprise information structure.",
+    "parent": "GOVERN.L2.3",
+    "children": []
+  },
+  "GOVERN.L2.3.L3.2": {
+    "id": "GOVERN.L2.3.L3.2",
+    "level": "L3",
+    "label": "Architecture Principles & Security-by-Design",
+    "definition": "Non-negotiable architectural standards and security-by-design foundations.",
+    "parent": "GOVERN.L2.3",
+    "children": []
+  },
+  "GOVERN.L2.3.L3.3": {
+    "id": "GOVERN.L2.3.L3.3",
+    "level": "L3",
+    "label": "Technology Radar & Reference Architecture",
+    "definition": "Technology lifecycle management preventing premature adoption and dangerous tech debt.",
+    "parent": "GOVERN.L2.3",
+    "children": []
+  },
+  "MANAGE.L2.1.L3.1": {
+    "id": "MANAGE.L2.1.L3.1",
+    "level": "L3",
+    "label": "Data Asset Valuation",
+    "definition": "Systematic measurement of data asset worth using economic methodologies.",
+    "parent": "MANAGE.L2.1",
+    "children": []
+  },
+  "MANAGE.L2.1.L3.2": {
+    "id": "MANAGE.L2.1.L3.2",
+    "level": "L3",
+    "label": "Cost Accounting & Chargeback",
+    "definition": "True cost allocation for data capabilities across the organization.",
+    "parent": "MANAGE.L2.1",
+    "children": []
+  },
+  "MANAGE.L2.1.L3.3": {
+    "id": "MANAGE.L2.1.L3.3",
+    "level": "L3",
+    "label": "Portfolio Management & Demand Prioritization",
+    "definition": "Investment allocation channeling 60-70% of BUILD capacity through economically rationalized priorities.",
+    "parent": "MANAGE.L2.1",
+    "children": []
+  },
+  "MANAGE.L2.1.L3.4": {
+    "id": "MANAGE.L2.1.L3.4",
+    "level": "L3",
+    "label": "Data Monetization & Value Realization",
+    "definition": "Mechanisms for capturing and demonstrating value from data assets.",
+    "parent": "MANAGE.L2.1",
+    "children": []
+  },
+  "MANAGE.L2.1.L3.5": {
+    "id": "MANAGE.L2.1.L3.5",
+    "level": "L3",
+    "label": "Economic Performance Reporting",
+    "definition": "CFO-grade ROI measurement and reporting for data investments.",
+    "parent": "MANAGE.L2.1",
+    "children": []
+  },
+  "MANAGE.L2.2.L3.1": {
+    "id": "MANAGE.L2.2.L3.1",
+    "level": "L3",
+    "label": "Role-Based Data Access",
+    "definition": "Access control determining who accesses what data under which conditions.",
+    "parent": "MANAGE.L2.2",
+    "children": []
+  },
+  "MANAGE.L2.2.L3.2": {
+    "id": "MANAGE.L2.2.L3.2",
+    "level": "L3",
+    "label": "Data Classification, Protection & Encryption",
+    "definition": "Data-centric protection through classification schemes and encryption.",
+    "parent": "MANAGE.L2.2",
+    "children": []
+  },
+  "MANAGE.L2.2.L3.3": {
+    "id": "MANAGE.L2.2.L3.3",
+    "level": "L3",
+    "label": "Data Breach Detection & Incident Response",
+    "definition": "Threat detection, incident response and breach management.",
+    "parent": "MANAGE.L2.2",
+    "children": []
+  },
+  "MANAGE.L2.2.L3.4": {
+    "id": "MANAGE.L2.2.L3.4",
+    "level": "L3",
+    "label": "GDPR Consent & Preference Management",
+    "definition": "Granular, traceable management of consent as a data asset — atomic capability concept.",
+    "parent": "MANAGE.L2.2",
+    "children": []
+  },
+  "MANAGE.L2.2.L3.5": {
+    "id": "MANAGE.L2.2.L3.5",
+    "level": "L3",
+    "label": "Data Protection Impact Assessment (DPIA)",
+    "definition": "Risk assessment for data processing activities under GDPR and DORA.",
+    "parent": "MANAGE.L2.2",
+    "children": []
+  },
+  "MANAGE.L2.2.L3.6": {
+    "id": "MANAGE.L2.2.L3.6",
+    "level": "L3",
+    "label": "Regulatory Affairs & Authority Management",
+    "definition": "Interface management with regulatory authorities and compliance bodies.",
+    "parent": "MANAGE.L2.2",
+    "children": []
+  },
+  "MANAGE.L2.3.L3.1": {
+    "id": "MANAGE.L2.3.L3.1",
+    "level": "L3",
+    "label": "Data Standards Management",
+    "definition": "Naming conventions, formatting rules and data standards governance.",
+    "parent": "MANAGE.L2.3",
+    "children": []
+  },
+  "MANAGE.L2.3.L3.2": {
+    "id": "MANAGE.L2.3.L3.2",
+    "level": "L3",
+    "label": "Data Modelling",
+    "definition": "Conceptual, logical and physical data modelling across the enterprise.",
+    "parent": "MANAGE.L2.3",
+    "children": []
+  },
+  "MANAGE.L2.3.L3.3": {
+    "id": "MANAGE.L2.3.L3.3",
+    "level": "L3",
+    "label": "Metadata & Business Glossary",
+    "definition": "Shared business vocabulary and metadata management.",
+    "parent": "MANAGE.L2.3",
+    "children": []
+  },
+  "MANAGE.L2.3.L3.4": {
+    "id": "MANAGE.L2.3.L3.4",
+    "level": "L3",
+    "label": "Data Lineage & Impact Analysis",
+    "definition": "End-to-end traceability of data flows, critical for AI Act compliance.",
+    "parent": "MANAGE.L2.3",
+    "children": []
+  },
+  "MANAGE.L2.3.L3.5": {
+    "id": "MANAGE.L2.3.L3.5",
+    "level": "L3",
+    "label": "Semantic Models & Taxonomy Management",
+    "definition": "Meaning structures, taxonomies and semantic layer management.",
+    "parent": "MANAGE.L2.3",
+    "children": []
+  },
+  "MANAGE.L2.3.L3.6": {
+    "id": "MANAGE.L2.3.L3.6",
+    "level": "L3",
+    "label": "Data Dictionaries & Catalogue Operations",
+    "definition": "Discovery platform operations and data dictionary management.",
+    "parent": "MANAGE.L2.3",
+    "children": []
+  },
+  "MANAGE.L2.4.L3.1": {
+    "id": "MANAGE.L2.4.L3.1",
+    "level": "L3",
+    "label": "Master & Reference Data Management",
+    "definition": "Golden records, master data management and reference data governance.",
+    "parent": "MANAGE.L2.4",
+    "children": []
+  },
+  "MANAGE.L2.4.L3.2": {
+    "id": "MANAGE.L2.4.L3.2",
+    "level": "L3",
+    "label": "Data Quality Management",
+    "definition": "Fitness for purpose — appears as Indispensable in 10 of 12 frameworks mapped.",
+    "parent": "MANAGE.L2.4",
+    "children": []
+  },
+  "MANAGE.L2.4.L3.3": {
+    "id": "MANAGE.L2.4.L3.3",
+    "level": "L3",
+    "label": "Data Anonymization & Pseudonymization",
+    "definition": "Privacy-preserving techniques for data protection and AI training data.",
+    "parent": "MANAGE.L2.4",
+    "children": []
+  },
+  "MANAGE.L2.4.L3.4": {
+    "id": "MANAGE.L2.4.L3.4",
+    "level": "L3",
+    "label": "Data Retention, Archival & Deletion",
+    "definition": "Lifecycle compliance from creation to deletion.",
+    "parent": "MANAGE.L2.4",
+    "children": []
+  },
+  "MANAGE.L2.4.L3.5": {
+    "id": "MANAGE.L2.4.L3.5",
+    "level": "L3",
+    "label": "Test Data Management",
+    "definition": "Non-production data management for development and testing.",
+    "parent": "MANAGE.L2.4",
+    "children": []
+  },
+  "MANAGE.L2.5.L3.1": {
+    "id": "MANAGE.L2.5.L3.1",
+    "level": "L3",
+    "label": "Service Level Agreement Definition & Monitoring",
+    "definition": "SLA architecture for data services.",
+    "parent": "MANAGE.L2.5",
+    "children": []
+  },
+  "MANAGE.L2.5.L3.2": {
+    "id": "MANAGE.L2.5.L3.2",
+    "level": "L3",
+    "label": "Business Continuity & Disaster Recovery",
+    "definition": "Resilience planning and disaster recovery for data services.",
+    "parent": "MANAGE.L2.5",
+    "children": []
+  },
+  "MANAGE.L2.5.L3.3": {
+    "id": "MANAGE.L2.5.L3.3",
+    "level": "L3",
+    "label": "Service Performance Reporting",
+    "definition": "Delivery measurement and performance reporting for data services.",
+    "parent": "MANAGE.L2.5",
+    "children": []
+  },
+  "MANAGE.L2.5.L3.4": {
+    "id": "MANAGE.L2.5.L3.4",
+    "level": "L3",
+    "label": "Continuous Service Improvement",
+    "definition": "Maturity progression closing the loop: RUN performance feeds back into improvement cycles.",
+    "parent": "MANAGE.L2.5",
+    "children": []
+  },
+  "RUN.L2.1.L3.1": {
+    "id": "RUN.L2.1.L3.1",
+    "level": "L3",
+    "label": "Business Intelligence & Reporting Delivery",
+    "definition": "Structured reports, visualizations, and dashboards delivering business intelligence to decision-makers across the organization.",
+    "parent": "RUN.L2.1",
+    "children": []
+  },
+  "RUN.L2.1.L3.2": {
+    "id": "RUN.L2.1.L3.2",
+    "level": "L3",
+    "label": "Self-Service Analytics",
+    "definition": "Empowers business users to explore, query, and analyse data autonomously through governed self-service platforms and semantic layers.",
+    "parent": "RUN.L2.1",
+    "children": []
+  },
+  "RUN.L2.1.L3.3": {
+    "id": "RUN.L2.1.L3.3",
+    "level": "L3",
+    "label": "Data Product Catalogue & Discoverability",
+    "definition": "Makes data products findable, understandable, and trustworthy through cataloguing, ownership declaration, SLA exposure, and consumer-facing discovery interfaces.",
+    "parent": "RUN.L2.1",
+    "children": []
+  },
+  "RUN.L2.1.L3.4": {
+    "id": "RUN.L2.1.L3.4",
+    "level": "L3",
+    "label": "Forecasting & Simulation Analytics",
+    "definition": "Predictive data products through forecasting and simulation.",
+    "parent": "RUN.L2.1",
+    "children": []
+  },
+  "RUN.L2.1.L3.5": {
+    "id": "RUN.L2.1.L3.5",
+    "level": "L3",
+    "label": "Data API & Services Management",
+    "definition": "Programmatic data access through APIs — critical for Data Mesh implementations.",
+    "parent": "RUN.L2.1",
+    "children": []
+  },
+  "RUN.L2.1.L3.6": {
+    "id": "RUN.L2.1.L3.6",
+    "level": "L3",
+    "label": "KPI & Metrics Delivery",
+    "definition": "Business measurement through KPI and metrics delivery.",
+    "parent": "RUN.L2.1",
+    "children": []
+  },
+  "RUN.L2.2.L3.1": {
+    "id": "RUN.L2.2.L3.1",
+    "level": "L3",
+    "label": "Advanced Analytics & Data Science",
+    "definition": "Statistical modeling, machine learning and advanced analytical capabilities.",
+    "parent": "RUN.L2.2",
+    "children": []
+  },
+  "RUN.L2.2.L3.2": {
+    "id": "RUN.L2.2.L3.2",
+    "level": "L3",
+    "label": "NLP & Conversational AI",
+    "definition": "Natural language processing and conversational AI applications.",
+    "parent": "RUN.L2.2",
+    "children": []
+  },
+  "RUN.L2.2.L3.3": {
+    "id": "RUN.L2.2.L3.3",
+    "level": "L3",
+    "label": "Generative AI & LLM Applications",
+    "definition": "Design and operation of generative AI applications leveraging large language models, including prompt engineering, retrieval-augmented generation, and enterprise LLM deployment.",
+    "parent": "RUN.L2.2",
+    "children": []
+  },
+  "RUN.L2.2.L3.4": {
+    "id": "RUN.L2.2.L3.4",
+    "level": "L3",
+    "label": "Enterprise Search & Information Retrieval",
+    "definition": "Knowledge discovery through enterprise search and information retrieval.",
+    "parent": "RUN.L2.2",
+    "children": []
+  },
+  "RUN.L2.2.L3.5": {
+    "id": "RUN.L2.2.L3.5",
+    "level": "L3",
+    "label": "ML Model Development & Experimentation",
+    "definition": "End-to-end machine learning model development lifecycle: problem framing, feature engineering, training, evaluation, and experiment tracking prior to production deployment.",
+    "parent": "RUN.L2.2",
+    "children": []
+  },
+  "RUN.L2.2.L3.6": {
+    "id": "RUN.L2.2.L3.6",
+    "level": "L3",
+    "label": "Decision Intelligence & Optimization",
+    "definition": "Automated and augmented decision-making through optimization models, simulation, prescriptive analytics, and decision support systems embedded in business processes.",
+    "parent": "RUN.L2.2",
+    "children": []
+  },
+  "RUN.L2.3.L3.1": {
+    "id": "RUN.L2.3.L3.1",
+    "level": "L3",
+    "label": "Data Pipeline Operations & Monitoring",
+    "definition": "Day-to-day operation and monitoring of data ingestion, transformation, and delivery pipelines. Includes scheduling, failure detection, alerting, restart management, and DataOps automation practices (CI/CD for data). Ensures pipelines run reliably within agreed SLAs.",
+    "parent": "RUN.L2.3",
+    "children": []
+  },
+  "RUN.L2.3.L3.2": {
+    "id": "RUN.L2.3.L3.2",
+    "level": "L3",
+    "label": "Data Platform Observability",
+    "definition": "End-to-end visibility into the health, freshness, volume, schema, and distribution of data across the platform. Encompasses data quality monitoring in production (data observability tools such as Monte Carlo, Bigeye, or Soda), lineage-based impact analysis for anomalies, and automated data freshness alerting. Distinct from BUILD-time testing.",
+    "parent": "RUN.L2.3",
+    "children": []
+  },
+  "RUN.L2.3.L3.3": {
+    "id": "RUN.L2.3.L3.3",
+    "level": "L3",
+    "label": "Data Incident Management",
+    "definition": "Structured response to data incidents in production: pipeline failures, data quality breaches, latency violations, and data loss events. Covers triage, escalation, root-cause analysis, remediation, post-mortem, and prevention. Aligns with ITIL incident management practices adapted for data-intensive systems and integrates with MANAGE_L2.2 for security incidents.",
+    "parent": "RUN.L2.3",
+    "children": []
+  },
+  "RUN.L2.3.L3.4": {
+    "id": "RUN.L2.3.L3.4",
+    "level": "L3",
+    "label": "Data Infrastructure Capacity Planning",
+    "definition": "Forward-looking management of compute, storage, and network capacity for data workloads. Includes demand forecasting, resource reservation, auto-scaling policies, tier management (hot/warm/cold storage), and infrastructure lifecycle decisions. Prevents capacity-induced outages while avoiding over-provisioning and associated FinOps waste.",
+    "parent": "RUN.L2.3",
+    "children": []
+  },
+  "RUN.L2.3.L3.5": {
+    "id": "RUN.L2.3.L3.5",
+    "level": "L3",
+    "label": "Data Product Lifecycle Operations",
+    "definition": "End-to-end operational management of data products through their lifecycle: launch, version management, deprecation, and decommissioning. Includes managing data product SLAs, consumer notification, backward compatibility, and the DataContract enforcement between producers and consumers. Operationalises the Data Mesh product ownership principle in production.",
+    "parent": "RUN.L2.3",
+    "children": []
+  },
+  "RUN.L2.3.L3.6": {
+    "id": "RUN.L2.3.L3.6",
+    "level": "L3",
+    "label": "Data FinOps & Cloud Cost Management",
+    "definition": "Continuous monitoring, allocation, and optimisation of cloud and on-premises data infrastructure costs. Covers per-workload cost attribution (chargeback to BU or data product), query cost optimization (BigQuery slot management, Redshift concurrency), storage tier management, LLM inference cost governance, and unit-economics dashboards for data products. The operational complement to MANAGE_L2.1 economic governance.",
+    "parent": "RUN.L2.3",
+    "children": []
+  }
+}

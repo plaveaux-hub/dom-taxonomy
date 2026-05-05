@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Operating Model — Anchor Data Capabilities · STRADA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap">
+<style>
+/* ═══════════════════════════════════════════
+   STRADA design tokens — extracted from style.css
+   ═══════════════════════════════════════════ */
+:root, [data-theme="dark"] {
+  --glass: rgba(14,16,24,0.82);
+  --glass-blur: blur(12px) saturate(160%);
+  --glass-border: rgba(255,255,255,0.06);
+  --strada-accent: #4f8cff;
+  --strada-accent-rgb: 79,140,255;
+  --bg: #0c0d12;
+  --surface: #14161e;
+  --surface-2: #1a1d28;
+  --surface-3: #22263a;
+  --border: #282d3e;
+  --border-focus: #4f8cff;
+  --text: #e4e6ed;
+  --text-muted: #8b90a0;
+  --text-faint: #6e7390;
+  --primary-light: #4f8cff;
+  --accent: #f59e42;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #ef4444;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+  --nav-bg: #0e1018;
+  --modal-bg: rgba(16,18,28,0.72);
+  --modal-blur: blur(20px) saturate(180%);
+  --modal-border: rgba(255,255,255,0.10);
+  --modal-radius: 14px;
+  --modal-shadow: 0 8px 40px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.06) inset;
+  --overlay-bg: rgba(6,8,16,0.45);
+  --topbar-h: 48px;
+  /* Macro colours */
+  --govern: #4f8cff;
+  --govern-bg: rgba(79,140,255,0.08);
+  --govern-border: rgba(79,140,255,0.25);
+  --manage: #f59e42;
+  --manage-bg: rgba(245,158,66,0.08);
+  --manage-border: rgba(245,158,66,0.25);
+  --build: #34d399;
+  --build-bg: rgba(52,211,153,0.08);
+  --build-border: rgba(52,211,153,0.25);
+  --run: #a78bfa;
+  --run-bg: rgba(167,139,250,0.08);
+  --run-border: rgba(167,139,250,0.25);
+}
+
+[data-theme="light"] {
+  --glass: rgba(255,255,255,0.85);
+  --glass-blur: blur(12px) saturate(160%);
+  --glass-border: rgba(0,0,0,0.06);
+  --strada-accent: #3b7ddb;
+  --strada-accent-rgb: 59,125,219;
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #f0f1f4;
+  --surface-3: #e8eaef;
+  --border: #d5d8e0;
+  --border-focus: #3b7ddb;
+  --text: #1e2028;
+  --text-muted: #6b7085;
+  --text-faint: #5e6378;
+  --primary-light: #3b7ddb;
+  --accent: #e88c2a;
+  --success: #16a369;
+  --warning: #d9a000;
+  --danger: #dc2626;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --nav-bg: #1e2434;
+  --modal-bg: rgba(255,255,255,0.82);
+  --modal-blur: blur(20px) saturate(180%);
+  --modal-border: rgba(0,0,0,0.10);
+  --modal-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 1px 0 rgba(255,255,255,0.9) inset;
+  --overlay-bg: rgba(30,32,40,0.30);
+  --govern: #3b7ddb;
+  --govern-bg: rgba(59,125,219,0.06);
+  --govern-border: rgba(59,125,219,0.20);
+  --manage: #e88c2a;
+  --manage-bg: rgba(232,140,42,0.06);
+  --manage-border: rgba(232,140,42,0.20);
+  --build: #16a369;
+  --build-bg: rgba(22,163,105,0.06);
+  --build-border: rgba(22,163,105,0.20);
+  --run: #7c3aed;
+  --run-bg: rgba(124,58,237,0.06);
+  --run-border: rgba(124,58,237,0.20);
+}
+
+*,*::before,*::after { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'tnum' 1;
+  min-height: 100vh;
+}
+
+/* ── Transitions ── */
+*, .btn, input, select {
+  transition-property: background-color, border-color, color, opacity, transform, box-shadow;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+/* ══════════════════════════════════════════
+   TOP NAV — Liquid Glass (faithful to Strada)
+   ══════════════════════════════════════════ */
+.topnav {
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 0.5px solid var(--border);
+  box-shadow: 0 1px 0 var(--glass-border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px;
+  height: var(--topbar-h);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  gap: 8px;
+}
+
+.nav-brand {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 12px;
+  border-right: 0.5px solid var(--border);
+  flex-shrink: 0;
+  text-decoration: none;
+  color: var(--text);
+}
+.nav-brand-logo {
+  width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+}
+.topnav-brand-name {
+  font-size: 0.9rem; font-weight: 700; letter-spacing: -0.01em; color: var(--text);
+}
+
+.nav-center {
+  flex: 1;
+  display: flex; align-items: center;
+  padding: 0 1.5rem;
+}
+.page-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.page-label strong { color: var(--text); font-weight: 600; }
+
+.nav-right {
+  display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
+}
+
+/* Theme selector — exact Strada style */
+.theme-selector-wrap {
+  display: flex; align-items: center;
+}
+.theme-selector {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  outline: none;
+}
+.theme-selector:hover { border-color: var(--border-focus); }
+
+/* Buttons — exact Strada */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  border: none; border-radius: var(--radius-sm);
+  font-size: 0.78rem; font-weight: 600; font-family: inherit;
+  cursor: pointer; white-space: nowrap;
+}
+.btn-ghost {
+  background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+}
+.btn-ghost:hover { background: var(--surface-2); color: var(--text); }
+.btn-small { padding: 0.25rem 0.55rem; font-size: 0.75rem; }
+
+/* ══════════════════════════════════════════
+   PAGE LAYOUT
+   ══════════════════════════════════════════ */
+.main-content {
+  padding-top: calc(var(--topbar-h) + 1.5rem);
+  padding-bottom: 3rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.page-header { margin-bottom: 1.25rem; }
+.page-header h1 {
+  font-size: 1.5rem; font-weight: 700; color: var(--text); line-height: 1.3;
+}
+.page-header .page-subtitle {
+  font-size: 0.82rem; color: var(--text-muted); margin-top: 0.15rem;
+}
+
+/* stats bar */
+.stats-bar {
+  display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
+  margin-bottom: 1rem;
+  font-size: 0.75rem; color: var(--text-faint);
+}
+.stat-item { display: flex; align-items: center; gap: 0.35rem; }
+.stat-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+}
+.stat-count { font-weight: 600; color: var(--text-muted); }
+.stats-total {
+  margin-left: auto;
+  font-size: 0.72rem; font-weight: 500;
+  color: var(--text-faint);
+  background: var(--surface-2);
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  padding: 0.15rem 0.65rem;
+}
+
+/* ══════════════════════════════════════════
+   MATRIX — core layout
+   ══════════════════════════════════════════ */
+.matrix-wrap {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: var(--border); /* gap colour */
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+/* Header row */
+.matrix-header {
+  display: grid;
+  grid-template-columns: 72px 220px 1fr;
+  gap: 1px;
+  background: var(--border);
+}
+.matrix-header-cell {
+  background: var(--nav-bg);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* Macro group = one row band */
+.macro-band {
+  display: grid;
+  grid-template-columns: 72px 220px 1fr;
+  gap: 1px;
+  background: var(--border);
+}
+
+/* L0 cell */
+.cell-l0 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  transition: filter 0.15s;
+  padding: 0.5rem 0;
+}
+.cell-l0:hover { filter: brightness(1.15); }
+
+/* L0 accent bar on hover */
+.cell-l0::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.cell-l0:hover::after { opacity: 1; }
+
+/* L2 column stack */
+.cell-l2-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+}
+
+/* Each L2 row */
+.cell-l2 {
+  flex: 1;
+  min-height: 48px;
+  display: flex; align-items: center;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8rem; font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+  border: none;
+  border-left: 3px solid transparent;
+  transition: filter 0.15s, border-color 0.15s;
+}
+.cell-l2:hover { filter: brightness(1.08); }
+
+/* L3 tiles column */
+.cell-l3-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+}
+
+.cell-l3-row {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.3rem;
+  padding: 0.4rem 0.65rem;
+  background: var(--surface);
+  align-items: stretch;
+}
+
+/* Tile — Strada badge style, fixed grid cell */
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 0.3rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem; font-weight: 500;
+  line-height: 1.25;
+  cursor: pointer;
+  border: 0.5px solid transparent;
+  transition: all 0.15s;
+  min-height: 44px;
+  /* No overflow clipping — let text wrap naturally */
+  word-break: break-word;
+  hyphens: auto;
+}
+.tile:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  filter: brightness(1.1);
+}
+/* Empty placeholder tile to fill gaps in the grid */
+.tile-empty {
+  background: transparent !important;
+  border-color: transparent !important;
+  cursor: default;
+  pointer-events: none;
+}
+.tile-empty:hover { transform: none; box-shadow: none; filter: none; }
+
+/* Per-macro colour theming */
+.govern-l0  { background: var(--govern-bg); color: var(--govern); }
+.govern-l2  { background: var(--govern-bg); color: var(--govern); border-left-color: var(--govern) !important; }
+.govern-l3  { background: var(--surface); }
+.govern-tile{ background: var(--govern-bg); color: var(--govern); border-color: var(--govern-border); }
+.govern-tile:hover { background: rgba(79,140,255,0.16); }
+
+.manage-l0  { background: var(--manage-bg); color: var(--manage); }
+.manage-l2  { background: var(--manage-bg); color: var(--manage); border-left-color: var(--manage) !important; }
+.manage-l3  { background: var(--surface); }
+.manage-tile{ background: var(--manage-bg); color: var(--manage); border-color: var(--manage-border); }
+.manage-tile:hover { background: rgba(245,158,66,0.16); }
+
+.build-l0   { background: var(--build-bg); color: var(--build); }
+.build-l2   { background: var(--build-bg); color: var(--build); border-left-color: var(--build) !important; }
+.build-l3   { background: var(--surface); }
+.build-tile { background: var(--build-bg); color: var(--build); border-color: var(--build-border); }
+.build-tile:hover { background: rgba(52,211,153,0.16); }
+
+.run-l0     { background: var(--run-bg); color: var(--run); }
+.run-l2     { background: var(--run-bg); color: var(--run); border-left-color: var(--run) !important; }
+.run-l3     { background: var(--surface); }
+.run-tile   { background: var(--run-bg); color: var(--run); border-color: var(--run-border); }
+.run-tile:hover { background: rgba(167,139,250,0.16); }
+
+/* ══════════════════════════════════════════
+   DOM MODAL — exact Strada liquid glass style
+   ══════════════════════════════════════════ */
+.dom-modal-overlay {
+  position: fixed; inset: 0;
+  background: var(--overlay-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 500; display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 5vh;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.22s cubic-bezier(.4,0,.2,1);
+}
+.dom-modal-overlay.open {
+  opacity: 1; pointer-events: all;
+}
+
+.dom-modal {
+  background: var(--modal-bg);
+  backdrop-filter: var(--modal-blur);
+  -webkit-backdrop-filter: var(--modal-blur);
+  border: 1px solid var(--modal-border);
+  border-radius: var(--modal-radius);
+  width: 90%; max-width: 680px; max-height: 85vh; overflow-y: auto;
+  box-shadow: var(--modal-shadow);
+  animation: modalIn 0.22s cubic-bezier(.4,0,.2,1);
+  display: flex; flex-direction: column;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+}
+
+.dom-modal-header {
+  position: sticky; top: 0; z-index: 2;
+  background: rgba(255,255,255,.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 14px 20px;
+  border-bottom: 0.5px solid rgba(255,255,255,.08);
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-shrink: 0;
+}
+[data-theme="light"] .dom-modal-header {
+  background: rgba(255,255,255,.8);
+  border-bottom: 0.5px solid rgba(0,0,0,.07);
+}
+
+.modal-breadcrumb {
+  font-size: 0.7rem; color: var(--text-faint);
+  font-family: 'Inter', monospace;
+  margin-bottom: 0.2rem;
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.modal-node-id {
+  font-size: 0.65rem; font-family: 'Courier New', monospace;
+  color: var(--text-faint);
+  background: var(--surface-2); border: 0.5px solid var(--border);
+  border-radius: 3px; padding: 0.05rem 0.35rem;
+}
+.modal-macro-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.modal-title-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.1rem; }
+.modal-title {
+  font-size: 1rem; font-weight: 700; color: var(--text); line-height: 1.3;
+}
+.modal-level-badge {
+  font-size: 0.6rem; font-weight: 700; padding: 0.1rem 0.4rem;
+  border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em;
+  background: var(--surface-3); color: var(--text-faint); flex-shrink: 0;
+}
+
+.dom-modal-close {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(0,0,0,.06); border: none;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 14px;
+  cursor: pointer; flex-shrink: 0;
+}
+.dom-modal-close:hover { background: rgba(0,0,0,.15); color: var(--text); }
+
+.dom-modal-meta {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.82rem; color: var(--text-muted); line-height: 1.65;
+  border-bottom: 0.5px solid var(--border);
+  background: var(--surface-2);
+}
+
+.dom-modal-body { padding: 0.85rem 1.25rem 1rem; overflow-y: auto; flex: 1; }
+
+.dom-modal-footer {
+  padding: 0.6rem 1.25rem;
+  border-top: 0.5px solid var(--border);
+  display: flex; justify-content: flex-end; gap: 0.4rem;
+  background: var(--surface-2);
+  position: sticky; bottom: 0;
+}
+
+/* Section title (re-used from strada) */
+.section-title {
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.8px; color: var(--text-faint);
+  margin: 1rem 0 0.5rem; padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-title:first-child { margin-top: 0; }
+
+/* dom-section accordion (Strada style) */
+.dom-section {
+  margin-bottom: 0.4rem;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.dom-section-head {
+  padding: 0.45rem 0.75rem;
+  background: var(--surface-2);
+  font-weight: 600; font-size: 0.78rem;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--text-muted);
+  user-select: none;
+}
+.dom-section-head:hover { background: var(--surface-3); color: var(--text); }
+.dom-section-arrow { font-size: 0.65rem; color: var(--text-faint); transition: transform 0.15s; }
+.dom-section.open .dom-section-arrow { transform: rotate(90deg); }
+.dom-section-body {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem; line-height: 1.6; color: var(--text-muted);
+  display: none;
+  border-top: 0.5px solid var(--border);
+}
+.dom-section.open .dom-section-body { display: block; }
+.dom-section-num {
+  font-size: 0.62rem; font-family: 'Courier New', monospace;
+  color: var(--text-faint); background: var(--surface-3);
+  border-radius: 3px; padding: 0.05rem 0.3rem; margin-right: 0.4rem;
+}
+.dom-section-body ul { list-style: none; padding: 0; margin: 0; }
+.dom-section-body li { padding: 0.15rem 0 0.15rem 1rem; position: relative; }
+.dom-section-body li::before { content: '›'; position: absolute; left: 0.1rem; color: var(--text-faint); }
+
+@media print {
+  .topnav, .dom-modal-overlay, .nav-right { display: none !important; }
+  body { background: white; }
+  .main-content { padding-top: 1rem; }
+  .tile:hover { transform: none; }
+  [data-theme="dark"] {
+    --bg: #f4f5f7; --surface: #fff; --surface-2: #f0f1f4; --surface-3: #e8eaef;
+    --border: #d5d8e0; --text: #1e2028; --text-muted: #6b7085; --text-faint: #5e6378;
+    --nav-bg: #1e2434;
+    --govern: #3b7ddb; --govern-bg: rgba(59,125,219,0.08); --govern-border: rgba(59,125,219,0.25);
+    --manage: #e88c2a; --manage-bg: rgba(232,140,42,0.08); --manage-border: rgba(232,140,42,0.25);
+    --build: #16a369; --build-bg: rgba(22,163,105,0.08); --build-border: rgba(22,163,105,0.25);
+    --run: #7c3aed; --run-bg: rgba(124,58,237,0.08); --run-border: rgba(124,58,237,0.25);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ Strada SVG logo symbol ══ -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden">
+  <defs>
+    <symbol id="strada-logo" viewBox="0 0 26 26">
+      <text x="12" y="20" text-anchor="middle"
+            font-family="'Inter','Helvetica Neue',Arial,sans-serif"
+            font-size="18" font-weight="900" fill="currentColor">aı</text>
+      <circle cx="19.5" cy="7" r="2.8" fill="#FAC775"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ══ Top Nav — Liquid Glass ══ -->
+<nav class="topnav">
+  <a class="nav-brand" href="#">
+    <div class="nav-brand-logo">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+        <text x="12" y="20" text-anchor="middle"
+              font-family="'Inter','Helvetica Neue',Arial,sans-serif"
+              font-size="18" font-weight="900" fill="white">aı</text>
+        <circle cx="19.5" cy="7" r="2.8" fill="#FAC775"/>
+      </svg>
+    </div>
+    <span class="topnav-brand-name">STRADA</span>
+  </a>
+
+  <div class="nav-center">
+    <span class="page-label">
+      DOM Taxonomy &nbsp;›&nbsp; <strong>Data Operating Model — Anchor Data Capabilities</strong>
+    </span>
+  </div>
+
+  <div class="nav-right">
+    <div class="theme-selector-wrap" title="Theme">
+      <select class="theme-selector" onchange="setTheme(this.value)" aria-label="Theme">
+        <option value="dark">🌙 Dark</option>
+        <option value="light" selected>☀️ Light</option>
+      </select>
+    </div>
+    <button class="btn btn-ghost btn-small" onclick="window.print()">🖨 Print</button>
+  </div>
+</nav>
+
+<!-- ══ Main ══ -->
+<main class="main-content">
+  <div class="page-header">
+    <h1>Data Operating Model — Anchor Data Capabilities</h1>
+    <p class="page-subtitle">Complete L0 / L2 / L3 capability map. Click any element to view its definition.</p>
+  </div>
+
+  <div class="stats-bar" id="statsBar"></div>
+
+  <div class="matrix-wrap">
+    <!-- Header -->
+    <div class="matrix-header">
+      <div class="matrix-header-cell">Macro-Process</div>
+      <div class="matrix-header-cell">Data Capabilities L2</div>
+      <div class="matrix-header-cell">Data Capabilities L3</div>
+    </div>
+    <!-- Bands injected by JS -->
+    <div id="matrixBody"></div>
+  </div>
+</main>
+
+<!-- ══ Modal ══ -->
+<div class="dom-modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="dom-modal" onclick="event.stopPropagation()">
+    <div class="dom-modal-header">
+      <div style="flex:1;min-width:0;">
+        <div class="modal-breadcrumb">
+          <span class="modal-macro-dot" id="modalDot"></span>
+          <span id="modalBreadcrumb"></span>
+          <span class="modal-node-id" id="modalId"></span>
+        </div>
+        <div class="modal-title-row">
+          <span class="modal-title" id="modalTitle"></span>
+          <span class="modal-level-badge" id="modalLevel"></span>
+        </div>
+      </div>
+      <button class="dom-modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="dom-modal-meta" id="modalDef"></div>
+    <div class="dom-modal-body" id="modalBody"></div>
+    <div class="dom-modal-footer">
+      <button class="btn btn-ghost btn-small" onclick="printModal()">🖨 Print</button>
+      <button class="btn btn-ghost btn-small" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = [{"id":"L0.GOVERN","label":"GOVERN","definition":"Set Direction, Rules & Architecture. Establishes the strategic compass, governance framework, and architectural standards guiding all data activities. Answers: Why invest in data? What rules apply? How should the data landscape be structured?","l2s":[{"id":"GOVERN.L2.1","label":"Data Strategy & Direction","definition":"Defines and steers the enterprise data strategy, investment framework, and organizational design. Provides the strategic compass guiding all GOVERN, MANAGE, BUILD, and RUN activities. Ensures data capabilities serve business objectives with measurable returns.","parent":"L0.GOVERN","l3s":[{"id":"GOVERN.L2.1.L3.1","label":"Data Strategy & Communication","definition":"Strategic alignment and stakeholder buy-in for data initiatives."},{"id":"GOVERN.L2.1.L3.2","label":"Data Valuation & Investment Framework","definition":"Economic justification and portfolio logic for data investments."},{"id":"GOVERN.L2.1.L3.3","label":"Organizational Design & Operating Model","definition":"Centralized vs. federated operating model decisions for data capabilities."}]},{"id":"GOVERN.L2.2","label":"Data Governance & Oversight","definition":"Establishes and operates the governance framework: policies, decision rights, accountability structures, compliance programs, stewardship models, and AI governance. Translates strategic direction (L2.1) into enforceable rules and oversight mechanisms.","parent":"L0.GOVERN","l3s":[{"id":"GOVERN.L2.2.L3.1","label":"Governance Framework & Decision Rights","definition":"Policy architecture and enforcement mechanisms for data governance."},{"id":"GOVERN.L2.2.L3.2","label":"Data Compliance, Legal & Privacy","definition":"Compliance with GDPR, DORA, AI Act and other regulatory frameworks."},{"id":"GOVERN.L2.2.L3.3","label":"Ownership & Stewardship","definition":"Accountability structures and domain responsibility for data assets."},{"id":"GOVERN.L2.2.L3.4","label":"Data Audit & Certification","definition":"Verification and attestation of data management practices and compliance."},{"id":"GOVERN.L2.2.L3.5","label":"ML/AI Model Governance","definition":"Ethical AI governance, model lifecycle management and AI Act compliance."}]},{"id":"GOVERN.L2.3","label":"Data Architecture & Standards","definition":"Establishes the enterprise data architecture, architectural principles, security-by-design foundations, and technology standards. Provides the technical governance blueprint that BUILD constructs, MANAGE operates within, and RUN delivers through.","parent":"L0.GOVERN","l3s":[{"id":"GOVERN.L2.3.L3.1","label":"Enterprise Information Architecture","definition":"Data landscape blueprint defining the enterprise information structure."},{"id":"GOVERN.L2.3.L3.2","label":"Architecture Principles & Security-by-Design","definition":"Non-negotiable architectural standards and security-by-design foundations."},{"id":"GOVERN.L2.3.L3.3","label":"Technology Radar & Reference Architecture","definition":"Technology lifecycle management preventing premature adoption and dangerous tech debt."}]}]},{"id":"L0.MANAGE","label":"MANAGE","definition":"Control, Value & Optimize Data Assets. The DOM's operational core and largest macro-process (5 L2, 26 L3). Controls data assets through their lifecycle, measures economic value, ensures security and compliance, and provides portfolio management driving BUILD and RUN priorities.","l2s":[{"id":"MANAGE.L2.1","label":"Data Economics & Performance","definition":"Establishes the economic framework for treating data as a measurable business asset through systematic valuation, cost accounting, monetization, and portfolio management. Transforms data management from a cost center into a value-demonstrating discipline.","parent":"L0.MANAGE","l3s":[{"id":"MANAGE.L2.1.L3.1","label":"Data Asset Valuation","definition":"Systematic measurement of data asset worth using economic methodologies."},{"id":"MANAGE.L2.1.L3.2","label":"Cost Accounting & Chargeback","definition":"True cost allocation for data capabilities across the organization."},{"id":"MANAGE.L2.1.L3.3","label":"Portfolio Management & Demand Prioritization","definition":"Investment allocation channeling 60-70% of BUILD capacity through economically rationalized priorities."},{"id":"MANAGE.L2.1.L3.4","label":"Data Monetization & Value Realization","definition":"Mechanisms for capturing and demonstrating value from data assets."},{"id":"MANAGE.L2.1.L3.5","label":"Economic Performance Reporting","definition":"CFO-grade ROI measurement and reporting for data investments."}]},{"id":"MANAGE.L2.2","label":"Data Security, Privacy & Compliance","definition":"Implements comprehensive data security, privacy, and compliance protecting assets through access control, classification, encryption, breach detection, consent management, and regulatory engagement. Ensures confidentiality, integrity, and availability while enabling appropriate and lawful data usage.","parent":"L0.MANAGE","l3s":[{"id":"MANAGE.L2.2.L3.1","label":"Role-Based Data Access","definition":"Access control determining who accesses what data under which conditions."},{"id":"MANAGE.L2.2.L3.2","label":"Data Classification, Protection & Encryption","definition":"Data-centric protection through classification schemes and encryption."},{"id":"MANAGE.L2.2.L3.3","label":"Data Breach Detection & Incident Response","definition":"Threat detection, incident response and breach management."},{"id":"MANAGE.L2.2.L3.4","label":"GDPR Consent & Preference Management","definition":"Granular, traceable management of consent as a data asset — atomic capability concept."},{"id":"MANAGE.L2.2.L3.5","label":"Data Protection Impact Assessment (DPIA)","definition":"Risk assessment for data processing activities under GDPR and DORA."},{"id":"MANAGE.L2.2.L3.6","label":"Regulatory Affairs & Authority Management","definition":"Interface management with regulatory authorities and compliance bodies."}]},{"id":"MANAGE.L2.3","label":"Knowledge & Metadata Management","definition":"Manages the enterprise knowledge layer: data standards, semantic models, metadata, business glossary, data lineage, and catalogue operations. Enables data discovery, shared understanding, and confident usage across the organization.","parent":"L0.MANAGE","l3s":[{"id":"MANAGE.L2.3.L3.1","label":"Data Standards Management","definition":"Naming conventions, formatting rules and data standards governance."},{"id":"MANAGE.L2.3.L3.2","label":"Data Modelling","definition":"Conceptual, logical and physical data modelling across the enterprise."},{"id":"MANAGE.L2.3.L3.3","label":"Metadata & Business Glossary","definition":"Shared business vocabulary and metadata management."},{"id":"MANAGE.L2.3.L3.4","label":"Data Lineage & Impact Analysis","definition":"End-to-end traceability of data flows, critical for AI Act compliance."},{"id":"MANAGE.L2.3.L3.5","label":"Semantic Models & Taxonomy Management","definition":"Meaning structures, taxonomies and semantic layer management."},{"id":"MANAGE.L2.3.L3.6","label":"Data Dictionaries & Catalogue Operations","definition":"Discovery platform operations and data dictionary management."}]},{"id":"MANAGE.L2.4","label":"Data Asset Management","definition":"Manages data assets through their complete lifecycle: master data, reference data, quality, anonymization, and retention. Ensures assets remain accurate, consistent, secure, and compliant from creation to deletion.","parent":"L0.MANAGE","l3s":[{"id":"MANAGE.L2.4.L3.1","label":"Master & Reference Data Management","definition":"Golden records, master data management and reference data governance."},{"id":"MANAGE.L2.4.L3.2","label":"Data Quality Management","definition":"Fitness for purpose — appears as Indispensable in 10 of 12 frameworks mapped."},{"id":"MANAGE.L2.4.L3.3","label":"Data Anonymization & Pseudonymization","definition":"Privacy-preserving techniques for data protection and AI training data."},{"id":"MANAGE.L2.4.L3.4","label":"Data Retention, Archival & Deletion","definition":"Lifecycle compliance from creation to deletion."},{"id":"MANAGE.L2.4.L3.5","label":"Test Data Management","definition":"Non-production data management for development and testing."}]},{"id":"MANAGE.L2.5","label":"Data Operations & Reliability","definition":"Ensures data capabilities deliver agreed performance, availability, and quality through SLA definition, operational monitoring, business continuity, and continuous improvement. Brings operational discipline and reliability engineering to the data function.","parent":"L0.MANAGE","l3s":[{"id":"MANAGE.L2.5.L3.1","label":"Service Level Agreement Definition & Monitoring","definition":"SLA architecture for data services."},{"id":"MANAGE.L2.5.L3.2","label":"Business Continuity & Disaster Recovery","definition":"Resilience planning and disaster recovery for data services."},{"id":"MANAGE.L2.5.L3.3","label":"Service Performance Reporting","definition":"Delivery measurement and performance reporting for data services."},{"id":"MANAGE.L2.5.L3.4","label":"Continuous Service Improvement","definition":"Maturity progression closing the loop: RUN performance feeds back into improvement cycles."}]}]},{"id":"L0.BUILD","label":"BUILD","definition":"Construct Platforms & Data Flows. Constructs the technical platforms and data flows that MANAGE controls and RUN delivers through. 60-70% of capacity is demand-driven by MANAGE Portfolio Management; 30-40% addresses technical debt, platform evolution, and innovation.","l2s":[{"id":"BUILD.L2.1","label":"Data Integration & Ingestion","definition":"Establishes and manages data integration and ingestion across the enterprise through pipeline orchestration, real-time streaming, batch processing, change data capture, and external data acquisition. The connective tissue between data sources and consumption platforms.","parent":"L0.BUILD","l3s":[{"id":"BUILD.L2.1.L3.1","label":"Data Orchestration & Choreography","definition":"Pipeline coordination and workflow orchestration for data movement."},{"id":"BUILD.L2.1.L3.2","label":"Real-Time Data Acquisition","definition":"Streaming ingestion and real-time data capture."},{"id":"BUILD.L2.1.L3.3","label":"Batch Data Transfer & Processing","definition":"Scheduled data movement and batch processing pipelines."},{"id":"BUILD.L2.1.L3.4","label":"Change Data Capture & Event Sourcing","definition":"Incremental capture of data changes and event-based data sourcing."},{"id":"BUILD.L2.1.L3.5","label":"External Data Supplier Management","definition":"Third-party data feeds and external supplier integration."},{"id":"BUILD.L2.1.L3.6","label":"Screen & Web Scraping","definition":"Unstructured data acquisition from screens and web sources."}]},{"id":"BUILD.L2.2","label":"Data Platform & Storage","definition":"Establishes and operates the data platform and storage landscape making data available for operational, analytical, and exploratory consumption. Covers transactional systems, analytical stores, data lakes, and virtualization — the infrastructure layer on which all data capabilities depend.","parent":"L0.BUILD","l3s":[{"id":"BUILD.L2.2.L3.1","label":"Transactional Data Platforms","definition":"OLTP systems and transactional data platform management."},{"id":"BUILD.L2.2.L3.2","label":"Data Lake Management","definition":"Raw and staged data storage in data lake architectures."},{"id":"BUILD.L2.2.L3.3","label":"Data Warehouse & Data Mart Management","definition":"Analytical serving layer through data warehouses and data marts."},{"id":"BUILD.L2.2.L3.4","label":"Data Virtualization & Federation","definition":"Logical access layer providing virtual views without physical data movement."}]},{"id":"BUILD.L2.3","label":"AI & Data Engineering","definition":"Constructs the engineering infrastructure enabling AI and machine learning capabilities: feature management, ML pipelines, model registries, and inference serving. Bridges data platform capabilities and AI-powered applications in RUN.","parent":"L0.BUILD","l3s":[{"id":"BUILD.L2.3.L3.1","label":"Feature Store & Training Data Management","definition":"Centralised management of ML features ensuring consistency between training and serving, and governance of training datasets including versioning and lineage."},{"id":"BUILD.L2.3.L3.2","label":"ML Pipeline & Model Infrastructure","definition":"Engineering and orchestration of end-to-end ML pipelines covering data preparation, training runs, evaluation, and automated retraining in production environments."},{"id":"BUILD.L2.3.L3.3","label":"LLM Serving & Inference Infrastructure","definition":"Infrastructure for deploying and serving large language models and AI inference workloads at scale, covering latency management, cost control, and model hosting patterns."},{"id":"BUILD.L2.3.L3.4","label":"Model Registry & Versioning","definition":"Centralised catalogue and lifecycle management for all ML and AI models: versioning, lineage, performance tracking, promotion gates, and deprecation across environments."}]}]},{"id":"L0.RUN","label":"RUN","definition":"Deliver Value to the Business. The value realization engine. Translates everything GOVERN directs, MANAGE controls, and BUILD constructs into consumable business outcomes. Where data management proves its worth — or fails to.","l2s":[{"id":"RUN.L2.1","label":"Data Product Delivery","definition":"Delivers consumable data products through business intelligence, self-service analytics, forecasting, APIs, and KPI delivery. Ensures data products are discoverable and accessible. The primary value realization mechanism for most organizations.","parent":"L0.RUN","l3s":[{"id":"RUN.L2.1.L3.1","label":"Business Intelligence & Reporting Delivery","definition":"Structured reports, visualizations, and dashboards delivering business intelligence to decision-makers across the organization."},{"id":"RUN.L2.1.L3.2","label":"Self-Service Analytics","definition":"Empowers business users to explore, query, and analyse data autonomously through governed self-service platforms and semantic layers."},{"id":"RUN.L2.1.L3.3","label":"Data Product Catalogue & Discoverability","definition":"Makes data products findable, understandable, and trustworthy through cataloguing, ownership declaration, SLA exposure, and consumer-facing discovery interfaces."},{"id":"RUN.L2.1.L3.4","label":"Forecasting & Simulation Analytics","definition":"Predictive data products through forecasting and simulation."},{"id":"RUN.L2.1.L3.5","label":"Data API & Services Management","definition":"Programmatic data access through APIs — critical for Data Mesh implementations."},{"id":"RUN.L2.1.L3.6","label":"KPI & Metrics Delivery","definition":"Business measurement through KPI and metrics delivery."}]},{"id":"RUN.L2.2","label":"Data Insights","definition":"Generates advanced insights and intelligent capabilities through data science, machine learning, and AI applications. Encompasses predictive analytics, NLP, generative AI, enterprise search, ML experimentation, and decision intelligence.","parent":"L0.RUN","l3s":[{"id":"RUN.L2.2.L3.1","label":"Advanced Analytics & Data Science","definition":"Statistical modeling, machine learning and advanced analytical capabilities."},{"id":"RUN.L2.2.L3.2","label":"NLP & Conversational AI","definition":"Natural language processing and conversational AI applications."},{"id":"RUN.L2.2.L3.3","label":"Generative AI & LLM Applications","definition":"Design and operation of generative AI applications leveraging large language models, including prompt engineering, retrieval-augmented generation, and enterprise LLM deployment."},{"id":"RUN.L2.2.L3.4","label":"Enterprise Search & Information Retrieval","definition":"Knowledge discovery through enterprise search and information retrieval."},{"id":"RUN.L2.2.L3.5","label":"ML Model Development & Experimentation","definition":"End-to-end machine learning model development lifecycle: problem framing, feature engineering, training, evaluation, and experiment tracking prior to production deployment."},{"id":"RUN.L2.2.L3.6","label":"Decision Intelligence & Optimization","definition":"Automated and augmented decision-making through optimization models, simulation, prescriptive analytics, and decision support systems embedded in business processes."}]},{"id":"RUN.L2.3","label":"DataOps & Platform Operations","definition":"Ensures continuous, reliable, and cost-efficient operation of data pipelines, platforms, and data products in production. Encompasses monitoring, incident management, capacity planning, DataOps practices, and FinOps for data infrastructure. The operational backbone that sustains the value delivered by RUN.L2.1 and RUN.L2.2.","parent":"L0.RUN","l3s":[{"id":"RUN.L2.3.L3.1","label":"Data Pipeline Operations & Monitoring","definition":"Day-to-day operation and monitoring of data ingestion, transformation, and delivery pipelines. Includes scheduling, failure detection, alerting, restart management, and DataOps automation practices (CI/CD for data). Ensures pipelines run reliably within agreed SLAs."},{"id":"RUN.L2.3.L3.2","label":"Data Platform Observability","definition":"End-to-end visibility into the health, freshness, volume, schema, and distribution of data across the platform. Encompasses data quality monitoring in production (data observability tools such as Monte Carlo, Bigeye, or Soda), lineage-based impact analysis for anomalies, and automated data freshness alerting. Distinct from BUILD-time testing."},{"id":"RUN.L2.3.L3.3","label":"Data Incident Management","definition":"Structured response to data incidents in production: pipeline failures, data quality breaches, latency violations, and data loss events. Covers triage, escalation, root-cause analysis, remediation, post-mortem, and prevention. Aligns with ITIL incident management practices adapted for data-intensive systems and integrates with MANAGE_L2.2 for security incidents."},{"id":"RUN.L2.3.L3.4","label":"Data Infrastructure Capacity Planning","definition":"Forward-looking management of compute, storage, and network capacity for data workloads. Includes demand forecasting, resource reservation, auto-scaling policies, tier management (hot/warm/cold storage), and infrastructure lifecycle decisions. Prevents capacity-induced outages while avoiding over-provisioning and associated FinOps waste."},{"id":"RUN.L2.3.L3.5","label":"Data Product Lifecycle Operations","definition":"End-to-end operational management of data products through their lifecycle: launch, version management, deprecation, and decommissioning. Includes managing data product SLAs, consumer notification, backward compatibility, and the DataContract enforcement between producers and consumers. Operationalises the Data Mesh product ownership principle in production."},{"id":"RUN.L2.3.L3.6","label":"Data FinOps & Cloud Cost Management","definition":"Continuous monitoring, allocation, and optimisation of cloud and on-premises data infrastructure costs. Covers per-workload cost attribution (chargeback to BU or data product), query cost optimization (BigQuery slot management, Redshift concurrency), storage tier management, LLM inference cost governance, and unit-economics dashboards for data products. The operational complement to MANAGE_L2.1 economic governance."}]}]}];
+
+const MACRO_CLASS = {
+  "L0.GOVERN": "govern",
+  "L0.MANAGE": "manage",
+  "L0.BUILD":  "build",
+  "L0.RUN":    "run"
+};
+const MACRO_COLOUR = {
+  govern: "var(--govern)",
+  manage: "var(--manage)",
+  build:  "var(--build)",
+  run:    "var(--run)"
+};
+const SECTION_LABELS = {
+  1:"Definition",2:"Business Context",3:"Key Aspects",
+  4:"Strategic Objectives",5:"Relationship to Other Macro-Processes",
+  6:"Data Economics & Performance",7:"Scope & Boundaries",
+  8:"Input Suppliers & Providers",9:"Stakeholders",
+  10:"Activities",11:"Tools",12:"Primary Deliverables",
+  13:"Outcomes Consumers",14:"Key Performance Indicators",15:"Success Factors"
+};
+const SECTION_GROUPS = {
+  "Identity":    [1,2],
+  "Strategy":    [3,4,5],
+  "Economics":   [6],
+  "Operations":  [7,10,11],
+  "Value Chain": [8,9,12,13],
+  "Measurement": [14,15]
+};
+
+// Try to load sections.json if available (same folder)
+let SECTIONS_DATA = {};
+fetch('sections.json').then(r => r.ok ? r.json() : {}).then(d => { SECTIONS_DATA = d; }).catch(()=>{});
+
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── Render ──
+function render() {
+  const body = document.getElementById('matrixBody');
+  let totalL2 = 0, totalL3 = 0;
+
+  DATA.forEach(macro => {
+    const cls = MACRO_CLASS[macro.id] || 'govern';
+    totalL2 += macro.l2s.length;
+    macro.l2s.forEach(l2 => totalL3 += l2.l3s.length);
+
+    // Band wrapper
+    const band = document.createElement('div');
+    band.className = 'macro-band';
+    band.style.gridTemplateRows = `repeat(${macro.l2s.length}, auto)`;
+
+    // L0
+    const l0 = document.createElement('div');
+    l0.className = `cell-l0 ${cls}-l0`;
+    l0.style.gridRow = `span ${macro.l2s.length}`;
+    l0.textContent = macro.label;
+    l0.title = macro.definition || '';
+    l0.onclick = () => openModal(macro.id, macro.label, 'L0', macro.definition, null, cls);
+    band.appendChild(l0);
+
+    // L2 col
+    const l2col = document.createElement('div');
+    l2col.className = 'cell-l2-col';
+    l2col.style.gridRow = `span ${macro.l2s.length}`;
+
+    // L3 col
+    const l3col = document.createElement('div');
+    l3col.className = 'cell-l3-col';
+    l3col.style.gridRow = `span ${macro.l2s.length}`;
+
+    macro.l2s.forEach(l2 => {
+      const l2el = document.createElement('div');
+      l2el.className = `cell-l2 ${cls}-l2`;
+      l2el.textContent = l2.label;
+      l2el.onclick = () => openModal(l2.id, l2.label, 'L2', l2.definition, macro.label, cls);
+      l2col.appendChild(l2el);
+
+      const l3row = document.createElement('div');
+      l3row.className = `cell-l3-row ${cls}-l3`;
+
+      const GRID_COLS = 6;
+      l2.l3s.forEach(l3 => {
+        const tile = document.createElement('span');
+        tile.className = `tile ${cls}-tile`;
+        tile.textContent = l3.label;
+        tile.onclick = () => openModal(l3.id, l3.label, 'L3', l3.definition, l2.label, cls);
+        l3row.appendChild(tile);
+      });
+      // Fill remaining cells so grid stays uniform
+      const remainder = l2.l3s.length % GRID_COLS;
+      if (remainder !== 0) {
+        for (let i = 0; i < GRID_COLS - remainder; i++) {
+          const empty = document.createElement('span');
+          empty.className = `tile tile-empty`;
+          l3row.appendChild(empty);
+        }
+      }
+
+      l3col.appendChild(l3row);
+    });
+
+    band.appendChild(l2col);
+    band.appendChild(l3col);
+    body.appendChild(band);
+  });
+
+  // Stats bar
+  const statsBar = document.getElementById('statsBar');
+  let html = '';
+  DATA.forEach(m => {
+    const cls = MACRO_CLASS[m.id];
+    const l3c = m.l2s.reduce((s,l)=>s+l.l3s.length,0);
+    html += `<span class="stat-item">
+      <span class="stat-dot" style="background:${MACRO_COLOUR[cls]}"></span>
+      <span>${esc(m.label)}</span>
+      <span class="stat-count">${m.l2s.length} L2 · ${l3c} L3</span>
+    </span>`;
+  });
+  html += `<span class="stats-total">${totalL2} capabilities · ${totalL3} sub-capabilities</span>`;
+  statsBar.innerHTML = html;
+}
+
+// ── Modal ──
+let currentModalData = {};
+
+function openModal(id, title, level, def, parent, cls) {
+  currentModalData = {id, title, level, def};
+  const colour = MACRO_COLOUR[cls] || 'var(--govern)';
+
+  document.getElementById('modalDot').style.background = colour;
+  document.getElementById('modalBreadcrumb').textContent = parent ? parent + '  ›' : '';
+  document.getElementById('modalId').textContent = id;
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalLevel').textContent = level;
+  document.getElementById('modalLevel').style.background = `${colour.replace('var(--'+cls+')', '')}`;
+
+  // Colour the level badge with macro colour tint
+  const badge = document.getElementById('modalLevel');
+  badge.style.color = colour;
+  badge.style.borderLeft = `2px solid ${colour}`;
+
+  document.getElementById('modalDef').textContent = def || 'No definition available.';
+
+  // Sections (if available)
+  const secData = SECTIONS_DATA[id] || {};
+  const bodyEl = document.getElementById('modalBody');
+  let bodyHtml = '';
+
+  Object.entries(SECTION_GROUPS).forEach(([grp, nums]) => {
+    const cards = [];
+    nums.forEach(n => {
+      const items = secData[String(n)] || [];
+      if (!items.length) return;
+      const itemsHtml = items.length === 1
+        ? esc(items[0])
+        : `<ul>${items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`;
+      cards.push(`<div class="dom-section">
+        <div class="dom-section-head" onclick="this.parentElement.classList.toggle('open')">
+          <span><span class="dom-section-num">${n}</span>${esc(SECTION_LABELS[n])}</span>
+          <span class="dom-section-arrow">›</span>
+        </div>
+        <div class="dom-section-body">${itemsHtml}</div>
+      </div>`);
+    });
+    if (cards.length) {
+      bodyHtml += `<div class="section-title">${grp}</div>${cards.join('')}`;
+    }
+  });
+
+  bodyEl.innerHTML = bodyHtml || '<p style="color:var(--text-faint);font-size:0.82rem;padding:.5rem 0;">No detailed content for this node.</p>';
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(evt) {
+  if (evt && evt.target !== document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function printModal() {
+  const {id, title, level, def} = currentModalData;
+  const bodyHtml = document.getElementById('modalBody').innerHTML;
+  const win = window.open('','_blank','width=800,height=700');
+  win.document.write(`<!DOCTYPE html><html><head><title>${esc(title)}</title>
+<style>
+  body{font-family:system-ui,sans-serif;font-size:13px;line-height:1.6;margin:2rem;color:#222}
+  h1{font-size:1.2rem;margin-bottom:.2rem} .meta-id{font-size:.65rem;color:#999;font-family:monospace;margin-bottom:.75rem}
+  .def{background:#f5f5f5;padding:.75rem;border-radius:4px;font-size:.83rem;color:#555;margin-bottom:1rem}
+  .section-title{font-size:.65rem;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:#999;margin:1rem 0 .35rem;border-bottom:1px solid #ddd;padding-bottom:.2rem}
+  .dom-section{margin-bottom:.35rem;border:1px solid #ddd;border-radius:4px;overflow:hidden}
+  .dom-section-head{padding:.35rem .6rem;background:#f0f0f0;font-size:.75rem;font-weight:600;color:#555;cursor:pointer;display:flex;justify-content:space-between}
+  .dom-section-arrow{font-size:.65rem}
+  .dom-section-body{padding:.4rem .6rem;font-size:.78rem;color:#444;display:block!important}
+  .dom-section-num{font-family:monospace;font-size:.62rem;background:#e0e0e0;padding:0 .25rem;border-radius:2px;margin-right:.3rem}
+  ul{padding-left:1rem;margin:0} li{margin-bottom:.1rem}
+</style></head><body>
+<div class="meta-id">${esc(id)} · ${esc(level)}</div>
+<h1>${esc(title)}</h1>
+<div class="def">${esc(def||'')}</div>
+${bodyHtml}
+<script>window.onload=()=>window.print()<\/script>
+</body></html>`);
+  win.document.close();
+}
+
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+// ── Theme toggle ──
+function setTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+}
+
+render();
+</script>
+</body>
+</html>
